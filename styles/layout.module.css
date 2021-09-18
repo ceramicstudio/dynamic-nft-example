@@ -1,0 +1,22 @@
+.layoutContainer {
+  @apply container mx-auto mt-2;
+}
+
+.topMenuLine {
+  @apply flex;
+  border-bottom: 1px solid #f53825;
+  line-height: 2.5rem;
+}
+
+.topMenu {
+  @apply flex ml-6;
+  line-height: 2.5rem;
+}
+
+.topMenu li a {
+  @apply block px-4;
+}
+
+.topMenu li a:hover {
+  @apply bg-gray-200;
+}
