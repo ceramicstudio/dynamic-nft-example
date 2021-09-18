@@ -1,3 +1,7 @@
+.verbatim {
+  font-style: italic;
+}
+
 .container {
   min-height: 100vh;
   padding: 0 0.5rem;
@@ -114,16 +118,23 @@
   border: none;
   color: rgba(0, 0, 0, 0.8);
   background: white;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   padding: 0.5rem 1.5rem;
   font-size: inherit;
   border-radius: 0.5rem;
 }
 
 @keyframes pulse {
-  0% { opacity: 0.2; }
-  50% { opacity: 0.8; }
-  100% { opacity: 0.2; }
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.2;
+  }
 }
 
 .main button:disabled {
@@ -131,16 +142,18 @@
 }
 
 .main button:hover {
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
 
 .main button:disabled:hover {
   /* Vanilla shadow*/
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
 .main button:active {
   box-shadow: none;
   margin-top: -2px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }

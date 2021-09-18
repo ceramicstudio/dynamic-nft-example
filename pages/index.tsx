@@ -2,7 +2,6 @@ import { useCeramic } from "use-ceramic";
 import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 import Head from "next/head";
-import Image from "next/image";
 
 function UsernameIDX() {
   const ceramic = useCeramic();
@@ -23,7 +22,7 @@ function UsernameIDX() {
   if (name) {
     return (
       <p>
-        Name from IDX: <code>{name}</code>
+        Name from IDX: <code className={styles.verbatim}>{name}</code>
       </p>
     );
   } else {
@@ -86,7 +85,7 @@ function SignInWithCeramic() {
           </strong>
         </p>
         <p>
-          Your DID: <code>{ceramic.did.id}</code>
+          Your DID: <code className={styles.verbatim}>{ceramic.did.id}</code>
         </p>
         <UsernameIDX />
       </>
