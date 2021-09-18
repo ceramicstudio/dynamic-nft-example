@@ -12,12 +12,12 @@ export function Layout(props: React.PropsWithChildren<{}>) {
         </Link>
         <ul className={styles.topMenu}>
           <li>
-            <ActiveLink href={"/mint"} activeClassName={"active"}>
+            <ActiveLink href={"/mint"} activeClassName={styles.active}>
               Mint
             </ActiveLink>
           </li>
           <li>
-            <ActiveLink href={"/view"} activeClassName={"active"}>
+            <ActiveLink href={"/view"} activeClassName={styles.active}>
               View
             </ActiveLink>
           </li>

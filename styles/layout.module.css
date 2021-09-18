@@ -18,5 +18,10 @@
 }
 
 .topMenu li a:hover {
-  @apply bg-gray-200;
+  @apply bg-gray-100 rounded-t;
+}
+
+.topMenu li a.active {
+  @apply font-bold -mb-3;
+  border-bottom: 3px solid #f53825;
 }
