@@ -7,6 +7,7 @@ import styles from "../../styles/mint.module.css";
 import * as ethers from "ethers";
 import { RaribleContractArtifact } from "./rarible-contract-artifact";
 import * as uint8arrays from "uint8arrays";
+import BigNumber from "bignumber.js";
 
 function StoreMetadata(props: {
   metadata: any;
@@ -158,12 +159,13 @@ function MintToken(props: {
           minter
         );
         const receipt = await tx.wait();
+        const decimalTokenId = new BigNumber(tokenId).toString(10);
         setTxToken({
-          tokenId: tokenId,
+          tokenId: decimalTokenId,
           txid: receipt.transactionHash,
           contract: contract.address,
         });
-        props.onTokenId(contract.address, tokenId);
+        props.onTokenId(contract.address, decimalTokenId);
       })
       .finally(() => {
         setProgress(false);
