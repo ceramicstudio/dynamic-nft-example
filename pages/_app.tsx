@@ -1,10 +1,13 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { CeramicProvider, Networks } from "use-ceramic";
+import React from "react";
+import { CeramicProvider, CeramicService, Networks } from "use-ceramic";
+
+const ceramicService = new CeramicService(Networks.MAINNET);
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <CeramicProvider network={Networks.MAINNET}>
+    <CeramicProvider service={ceramicService}>
       <Component {...pageProps} />
     </CeramicProvider>
   );

@@ -2,8 +2,11 @@ import React from "react";
 import styles from "../styles/layout.module.css";
 import Link from "next/link";
 import { ActiveLink } from "./active-link";
+import { useCeramic } from "use-ceramic";
 
 export function Layout(props: React.PropsWithChildren<{}>) {
+  const ceramic = useCeramic();
+
   return (
     <div className={styles.layoutContainer}>
       <nav className={styles.topMenuLine}>

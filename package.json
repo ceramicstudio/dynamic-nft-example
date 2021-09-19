@@ -7,13 +7,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "export": "next export"
+    "export": "next export",
+    "clean": "rm -rf ./.next ./out"
   },
   "dependencies": {
     "next": "11.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "use-ceramic": "0.0.4"
+    "use-ceramic": "0.0.6"
   },
   "devDependencies": {
     "@types/react": "17.0.20",

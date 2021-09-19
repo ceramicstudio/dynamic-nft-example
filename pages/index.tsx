@@ -1,7 +1,8 @@
 import { useCeramic } from "use-ceramic";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 import Head from "next/head";
+import Link from "next/link";
 
 function UsernameIDX() {
   const ceramic = useCeramic();
@@ -30,7 +31,7 @@ function UsernameIDX() {
   }
 }
 
-function SignInWithCeramic() {
+function SignInWithCeramic(props: React.PropsWithChildren<{}>) {
   const ceramic = useCeramic();
   const [authenticated, setAuthenticated] = useState(ceramic.isAuthenticated);
   const [progress, setProgress] = useState(false);
@@ -76,27 +77,23 @@ function SignInWithCeramic() {
   };
 
   if (authenticated) {
-    return (
-      <>
-        <hr />
-        <p>
-          <strong>
-            Congratulations! You have just signed in with Ceramic!
-          </strong>
-        </p>
-        <p>
-          Your DID: <code className={styles.verbatim}>{ceramic.did.id}</code>
-        </p>
-        <UsernameIDX />
-      </>
-    );
+    return <>{props.children}</>;
+    // return (
+    //   <>
+    //     <hr />
+    //     <p>
+    //       <strong>
+    //         Congratulations! You have just signed in with Ceramic!
+    //       </strong>
+    //     </p>
+    //     <p>
+    //       Your DID: <code className={styles.verbatim}>{ceramic.did.id}</code>
+    //     </p>
+    //     <UsernameIDX />
+    //   </>
+    // );
   } else {
-    return (
-      <>
-        <p>Try it yourself!</p>
-        {renderButton()}
-      </>
-    );
+    return renderButton();
   }
 }
 
@@ -108,22 +105,19 @@ export default function Home() {
         <meta name="description" content="Ceramic Starter App" />
       </Head>
       <main className={styles.main}>
-        <div className={styles.logo}>
-          <img
-            src="/logo-ceramic.svg"
-            alt="Ceramic Logo"
-          />
-        </div>
-        <p>
-          This is a <a href={"https://ceramic.network"}>Ceramic</a> and{" "}
-          <a href={"https://idx.xyz/"}>IDX</a> starter app. You can freely use
-          it as a base for your application.
-        </p>
-        <p>
-          The app allows a user to sign in with Ethereum wallet, and displays
-          her DID.
-        </p>
-        <SignInWithCeramic />
+        <div className={styles.logo}>🔸🌱</div>
+        <SignInWithCeramic>
+          <div className={"text-center w-full"}>
+            <hr />
+            <Link href={"/mint"} shallow={true}>
+              Mint
+            </Link>{" "}
+            or{" "}
+            <Link href={"/view"} shallow={true}>
+              View
+            </Link>
+          </div>
+        </SignInWithCeramic>
       </main>
     </div>
   );
