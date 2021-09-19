@@ -7,7 +7,6 @@ import styles from "../../styles/mint.module.css";
 import * as ethers from "ethers";
 import { RaribleContractArtifact } from "./rarible-contract-artifact";
 import * as uint8arrays from "uint8arrays";
-import { toAddress } from "@rarible/types";
 
 function StoreMetadata(props: {
   metadata: any;
@@ -78,8 +77,15 @@ function StoreMetadata(props: {
   );
 }
 
-function MintToken(props: { metadata: any; metadataCid: string }) {
+function MintToken(props: {
+  metadata: any;
+  metadataCid: string;
+  onTokenId: (contract: string, tokenId: string) => void;
+}) {
   const [progress, setProgress] = useState(false);
+  const [txToken, setTxToken] = useState<
+    { tokenId: string; txid: string; contract: string } | undefined
+  >(undefined);
   const web3 = useWeb3();
   const rarible = createRaribleSdk(new Web3Ethereum(web3), web3.networkName, {
     fetchApi: fetch.bind(window),
@@ -151,7 +157,13 @@ function MintToken(props: { metadata: any; metadataCid: string }) {
           ],
           minter
         );
-        console.log("tx", tx);
+        const receipt = await tx.wait();
+        setTxToken({
+          tokenId: tokenId,
+          txid: receipt.transactionHash,
+          contract: contract.address,
+        });
+        props.onTokenId(contract.address, tokenId);
       })
       .finally(() => {
         setProgress(false);
@@ -162,18 +174,76 @@ function MintToken(props: { metadata: any; metadataCid: string }) {
     return <></>;
   }
 
+  const renderResult = () => {
+    if (!txToken) {
+      return <></>;
+    }
+
+    return (
+      <div className={`${styles.inputGroup} mt-3 p-2 rounded-lg bg-gray-100`}>
+        <label htmlFor="transaction-txid" className={styles.inputTextLabel}>
+          Transaction
+        </label>
+        <input
+          type="text"
+          disabled={true}
+          name="transaction-txid"
+          id="transaction-txid"
+          className={"mb-2"}
+          value={txToken.txid}
+        />
+        <label htmlFor="token-id" className={styles.inputTextLabel}>
+          Token ID
+        </label>
+        <input
+          type="text"
+          disabled={true}
+          name="token-id"
+          id="token-id"
+          className={"mb-2"}
+          value={txToken.tokenId}
+        />
+        <label htmlFor="contract-address" className={styles.inputTextLabel}>
+          Contract Address
+        </label>
+        <input
+          type="text"
+          disabled={true}
+          name="contract-address"
+          id="contract-address"
+          value={txToken.contract}
+        />
+      </div>
+    );
+  };
+
   const formClassName = progress ? styles.disabledForm : "";
   return (
     <form onSubmit={handleSubmit} className={`mt-3 ${formClassName}`}>
       <button type={"submit"} disabled={progress}>
         Mint ERC721 token
       </button>
+      {renderResult()}
     </form>
   );
 }
 
+function ChangeController(props: {
+  tile: TileDocument;
+  token: { contract: string; tokenId: string } | undefined;
+}) {
+  if (!props.tile || !props.token) {
+    return <></>;
+  }
+
+  return <>Change Controller</>;
+}
+
 export function MintNft(props: { tile?: TileDocument }) {
   const [metadataCid, setMetadataCid] = useState("");
+  const [token, setToken] = useState<
+    { contract: string; tokenId: string } | undefined
+  >(undefined);
 
   if (!props.tile) {
     return <></>;
@@ -193,7 +263,16 @@ export function MintNft(props: { tile?: TileDocument }) {
         metadata={metadata}
         onMetadataCid={(cid) => setMetadataCid(cid)}
       />
-      <MintToken metadata={metadata} metadataCid={metadataCid} />
+      <MintToken
+        metadata={metadata}
+        metadataCid={metadataCid}
+        onTokenId={(contract, tokenId) =>
+          setToken({
+            contract,
+            tokenId,
+          })
+        }
+      />
     </>
   );
 }
