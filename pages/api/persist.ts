@@ -42,8 +42,9 @@ async function handler(req: NextApiRequest, res: NextApiResponse<CidResponse>) {
   const form = await parseForm(req);
   const file = form.files.file[0];
   const name = file.originalFilename;
-  const f = new File(fs.readFileSync(file.path), name);
-  const cid = await web3Storage.put([f]);
+
+  const f = new File([fs.readFileSync(file.path)], name);
+  const cid = await web3Storage.put([f], { wrapWithDirectory: false });
   res.status(200).json({ cid: cid.toString() });
 }
 

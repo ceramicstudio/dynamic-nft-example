@@ -88,9 +88,9 @@ function MintToken(props: {
     { tokenId: string; txid: string; contract: string } | undefined
   >(undefined);
   const web3 = useWeb3();
-  const rarible = createRaribleSdk(new Web3Ethereum(web3), web3.networkName, {
-    fetchApi: fetch.bind(window),
-  });
+  // const rarible = createRaribleSdk(new Web3Ethereum(web3), web3.networkName, {
+  //   fetchApi: fetch.bind(window),
+  // });
   // const contractAddress = "0x6ede7f3c26975aad32a475e1021d8f6f39c89d82"; // rinkeby
   const chainId = web3.chainId.toString();
   // @ts-ignore
