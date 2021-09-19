@@ -228,26 +228,11 @@ function MintToken(props: {
   );
 }
 
-function ChangeController(props: {
+export function MintNft(props: {
   tile: TileDocument;
-  token: { contract: string; tokenId: string } | undefined;
+  onDone: (contract: string, tokenId: string) => void;
 }) {
-  if (!props.tile || !props.token) {
-    return <></>;
-  }
-
-  return <>Change Controller</>;
-}
-
-export function MintNft(props: { tile?: TileDocument }) {
   const [metadataCid, setMetadataCid] = useState("");
-  const [token, setToken] = useState<
-    { contract: string; tokenId: string } | undefined
-  >(undefined);
-
-  if (!props.tile) {
-    return <></>;
-  }
 
   const metadata = {
     name: props.tile.content.name,
@@ -266,12 +251,7 @@ export function MintNft(props: { tile?: TileDocument }) {
       <MintToken
         metadata={metadata}
         metadataCid={metadataCid}
-        onTokenId={(contract, tokenId) =>
-          setToken({
-            contract,
-            tokenId,
-          })
-        }
+        onTokenId={(contract, tokenId) => props.onDone(contract, tokenId)}
       />
     </>
   );
