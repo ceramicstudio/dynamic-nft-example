@@ -1,0 +1,7 @@
+.inputGroup {
+    @apply col-span-6 sm:col-span-4 mt-3;
+}
+
+.inputTextLabel {
+    @apply block text-sm font-medium text-gray-700;
+}

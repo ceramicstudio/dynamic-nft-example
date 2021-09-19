@@ -9,3 +9,37 @@ hr {
   margin-bottom: 1rem;
   margin-top: 0;
 }
+
+h1 {
+  @apply text-2xl mt-3 font-bold;
+}
+
+input[type="text"] {
+  @apply mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md;
+}
+
+
+button {
+  border: none;
+  color: rgba(0, 0, 0, 0.8);
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.05) 0 6px 24px 0, rgba(0, 0, 0, 0.08) 0 0 0 1px;
+  padding: 0.5rem 1.5rem;
+  font-size: inherit;
+  border-radius: 0.5rem;
+}
+
+button:hover {
+  box-shadow: rgba(0, 0, 0, 0.16) 0 10px 36px 0, rgba(0, 0, 0, 0.06) 0 0 0 1px;
+}
+
+button:disabled:hover {
+  /* Vanilla shadow*/
+  box-shadow: rgba(0, 0, 0, 0.05) 0 6px 24px 0, rgba(0, 0, 0, 0.08) 0 0 0 1px;
+}
+
+button:active {
+  box-shadow: none;
+  margin-top: -2px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}

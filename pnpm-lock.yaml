@@ -1,6 +1,8 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@rarible/protocol-ethereum-sdk': ^0.3.2
+  '@tailwindcss/forms': ^0.3.3
   '@types/react': 17.0.20
   autoprefixer: ^10.3.4
   next: 11.1.2
@@ -13,6 +15,8 @@ specifiers:
   use-ceramic: 0.0.6
 
 dependencies:
+  '@rarible/protocol-ethereum-sdk': 0.3.2
+  '@tailwindcss/forms': 0.3.3_tailwindcss@2.2.15
   next: 11.1.2_01b6e46c81e6fda6a6d233df547d9171
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
@@ -577,6 +581,57 @@ packages:
       util: 0.11.1
     dev: false
 
+  /@rarible/action/0.2.7:
+    resolution: {integrity: sha512-BHF8O3ZigY943fSA1oy5iR7yvnENvOYIS/yUDnOhOuKcRH7JAHyrsfPi2DmzqZl1zK3V/O6WBmV+VRgWlPQ48w==}
+    peerDependencies:
+      tslib: 2.3.1
+    dev: false
+
+  /@rarible/ethereum-provider/0.3.0:
+    resolution: {integrity: sha512-r9tRTFqXD1YNMm6Hmy82bn1mzP85OPspubV7+D8VU6ZlxxrYi1qAvhFe7Qs7BrBMODZHjQQU/Z4Bw8HSV36cLQ==}
+    peerDependencies:
+      eth-sig-util: 3.0.1
+      tslib: ^2.3.1
+    dev: false
+
+  /@rarible/protocol-api-client/0.1.7:
+    resolution: {integrity: sha512-MWNPJlil3Wg6R+bn2wDWdQVI22jo0C1H4ajudhceGpfMBLnB1lRM38SAdRfpm3FgLwB/N2I4FwVQIeZObZKgtA==}
+    dependencies:
+      '@rarible/types': 0.1.7
+    transitivePeerDependencies:
+      - tslib
+    dev: false
+
+  /@rarible/protocol-ethereum-sdk/0.3.2:
+    resolution: {integrity: sha512-1BwdYRQXH+9S6yBVyaK9+T71QrCpnT3yjkTRMfhd1rG4LZWx15IgRmsld/Q1JaFqUnnsquivf9Txn+iYesdshA==}
+    peerDependencies:
+      '@ethereumjs/common': ^2.4.0
+      '@ethereumjs/tx': ^3.3.0
+      ethereumjs-util: ^7.1.0
+      tslib: ^2.3.1
+    dependencies:
+      '@rarible/action': 0.2.7
+      '@rarible/ethereum-provider': 0.3.0
+      '@rarible/protocol-api-client': 0.1.7
+      '@rarible/utils': 0.0.3
+    transitivePeerDependencies:
+      - eth-sig-util
+    dev: false
+
+  /@rarible/types/0.1.7:
+    resolution: {integrity: sha512-rq0vGMQlnTQstTPwmFy8lajkOaCTOe7Odf/W1g6o3uLUD6Dlj0Vroh2/erfiyA6vuDALrATWsP5mw2berdwrTw==}
+    peerDependencies:
+      tslib: ^2.3.1
+    dev: false
+
+  /@rarible/utils/0.0.3:
+    resolution: {integrity: sha512-C2zh2SO1tWAMFrcYHMzyXFAj+gccGGcWFIHq7d7g/A/h3PKeeJCWjLquoIFzbCBebxIlMnadGs7+64lPt6nejg==}
+    peerDependencies:
+      tslib: ^2.3.1
+    dependencies:
+      bignumber.js: 9.0.1
+    dev: false
+
   /@sindresorhus/is/4.2.0:
     resolution: {integrity: sha512-VkE3KLBmJwcCaVARtQpfuKcKv8gcBmUubrfHGF84dXuuW6jgsRYxPtzcIhPyK9WAPpRt2/xY6zkD9MnRaJzSyw==}
     engines: {node: '>=10'}
@@ -705,6 +760,15 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       defer-to-connect: 2.0.1
+    dev: false
+
+  /@tailwindcss/forms/0.3.3_tailwindcss@2.2.15:
+    resolution: {integrity: sha512-U8Fi/gq4mSuaLyLtFISwuDYzPB73YzgozjxOIHsK6NXgg/IWD1FLaHbFlWmurAMyy98O+ao74ksdQefsquBV1Q==}
+    peerDependencies:
+      tailwindcss: '>=2.0.0'
+    dependencies:
+      mini-svg-data-uri: 1.3.3
+      tailwindcss: 2.2.15_4dc2d3db2b138fb8fa7d5c7b0c803aba
     dev: false
 
   /@types/bn.js/4.11.6:
@@ -3335,6 +3399,11 @@ packages:
     resolution: {integrity: sha1-e9KC4/WELtKVu3SM3Z8f+iyCRoU=}
     dependencies:
       dom-walk: 0.1.2
+    dev: false
+
+  /mini-svg-data-uri/1.3.3:
+    resolution: {integrity: sha512-+fA2oRcR1dJI/7ITmeQJDrYWks0wodlOz0pAEhKYJ2IVc1z0AnwJUsKY2fzFmPAM3Jo9J0rBx8JAA9QQSJ5PuA==}
+    hasBin: true
     dev: false
 
   /minimalistic-assert/1.0.1:
