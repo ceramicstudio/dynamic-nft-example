@@ -9,6 +9,8 @@ type AllowedNetworks = "ropsten" | "rinkeby" | "mainnet";
 export class Web3Service {
   private _web3: Web3 | undefined = undefined;
   private _provider: any;
+  private _account: string | undefined = undefined;
+  private _chainId: number | undefined = undefined;
   readonly networkName: AllowedNetworks;
 
   constructor(readonly options: Partial<ICoreOptions>) {
@@ -24,6 +26,25 @@ export class Web3Service {
     const web3Modal = new Web3Modal(this.options);
     this._provider = await web3Modal.connect();
     this._web3 = new Web3(this._provider);
+    const accounts = await this._web3.eth.getAccounts();
+    this._chainId = await this._web3.eth.getChainId();
+    this._account = accounts[0];
+  }
+
+  get chainId(): number {
+    if (this._chainId) {
+      return this._chainId;
+    } else {
+      throw new Error(`connect first`);
+    }
+  }
+
+  get account(): string {
+    if (this._account) {
+      return this._account;
+    } else {
+      throw new Error(`connect first`);
+    }
   }
 
   get provider(): any {
