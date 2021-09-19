@@ -16,7 +16,6 @@ export function CreateStream(props: {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setProgress(true);
-    const formData = new FormData();
     if (!name) {
       setProgress(false);
       alert("Add name");
@@ -29,6 +28,7 @@ export function CreateStream(props: {
       setProgress(false);
       alert("Add file");
     }
+    const formData = new FormData();
     formData.set("file", file!);
     fetch("/api/persist", { method: "POST", body: formData })
       .then((r) => r.json())
@@ -105,7 +105,7 @@ export function CreateStream(props: {
             onChange={(event) => setDescription(event.currentTarget.value)}
           />
         </div>
-        <div className={styles.inputGroup}>
+        <div className={`${styles.inputGroup} mb-3`}>
           <label htmlFor="token-image" className={styles.inputTextLabel}>
             Initial Image
           </label>
@@ -118,7 +118,7 @@ export function CreateStream(props: {
           />
         </div>
 
-        <button type={"submit"} className={"mt-3"} disabled={progress}>
+        <button type={"submit"} disabled={progress}>
           Create stream
         </button>
         {renderStreamId()}

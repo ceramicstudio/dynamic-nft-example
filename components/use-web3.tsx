@@ -3,11 +3,22 @@ import Web3 from "web3";
 import Web3Modal from "web3modal";
 import React, { useContext } from "react";
 
+const ALLOWED_NETWORKS = ["ropsten", "rinkeby", "mainnet"];
+type AllowedNetworks = "ropsten" | "rinkeby" | "mainnet";
+
 export class Web3Service {
   private _web3: Web3 | undefined = undefined;
   private _provider: any;
+  readonly networkName: AllowedNetworks;
 
-  constructor(readonly options: Partial<ICoreOptions>) {}
+  constructor(readonly options: Partial<ICoreOptions>) {
+    if (!options.network) options.network = "rinkeby";
+    if (ALLOWED_NETWORKS.includes(options.network)) {
+      this.networkName = options.network! as AllowedNetworks;
+    } else {
+      throw new Error(`Disallowed network ${options.network}`);
+    }
+  }
 
   async connect() {
     const web3Modal = new Web3Modal(this.options);

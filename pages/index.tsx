@@ -4,33 +4,6 @@ import styles from "../styles/Home.module.css";
 import Head from "next/head";
 import Link from "next/link";
 
-function UsernameIDX() {
-  const ceramic = useCeramic();
-  const [name, setName] = useState("");
-
-  useEffect(() => {
-    if (ceramic.isAuthenticated && !name) {
-      ceramic.idx
-        .get<{ name: string | undefined }>("basicProfile")
-        .then((profile) => {
-          if (profile && profile.name) {
-            setName(profile.name);
-          }
-        });
-    }
-  });
-
-  if (name) {
-    return (
-      <p>
-        Name from IDX: <code className={styles.verbatim}>{name}</code>
-      </p>
-    );
-  } else {
-    return <></>;
-  }
-}
-
 function SignInWithCeramic(props: React.PropsWithChildren<{}>) {
   const ceramic = useCeramic();
   const [authenticated, setAuthenticated] = useState(ceramic.isAuthenticated);
@@ -78,26 +51,12 @@ function SignInWithCeramic(props: React.PropsWithChildren<{}>) {
 
   if (authenticated) {
     return <>{props.children}</>;
-    // return (
-    //   <>
-    //     <hr />
-    //     <p>
-    //       <strong>
-    //         Congratulations! You have just signed in with Ceramic!
-    //       </strong>
-    //     </p>
-    //     <p>
-    //       Your DID: <code className={styles.verbatim}>{ceramic.did.id}</code>
-    //     </p>
-    //     <UsernameIDX />
-    //   </>
-    // );
   } else {
     return renderButton();
   }
 }
 
-export default function Home() {
+export default function HomePage() {
   return (
     <div className={styles.container}>
       <Head>
