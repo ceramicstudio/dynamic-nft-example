@@ -4,12 +4,14 @@ specifiers:
   '@rarible/protocol-ethereum-sdk': ^0.3.2
   '@tailwindcss/forms': ^0.3.3
   '@types/react': 17.0.20
+  '@types/react-file-input': ^0.0.10
   autoprefixer: ^10.3.4
   next: 11.1.2
   postcss: ^8.3.6
   prettier: ^2.4.0
   react: 17.0.2
   react-dom: 17.0.2
+  react-file-input: ^0.2.5
   tailwindcss: ^2.2.15
   typescript: 4.4.2
   use-ceramic: 0.0.6
@@ -20,10 +22,12 @@ dependencies:
   next: 11.1.2_01b6e46c81e6fda6a6d233df547d9171
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
+  react-file-input: 0.2.5_react@17.0.2
   use-ceramic: 0.0.6
 
 devDependencies:
   '@types/react': 17.0.20
+  '@types/react-file-input': 0.0.10
   autoprefixer: 10.3.4_postcss@8.3.6
   postcss: 8.3.6
   prettier: 2.4.0
@@ -812,6 +816,12 @@ packages:
 
   /@types/prop-types/15.7.4:
     resolution: {integrity: sha512-rZ5drC/jWjrArrS8BR6SIr4cWpW09RNTYt9AMZo3Jwwif+iacXAqgVjm0B0Bv/S1jhDXKHqRVNCbACkJ89RAnQ==}
+    dev: true
+
+  /@types/react-file-input/0.0.10:
+    resolution: {integrity: sha512-8/ByTnrYMywuQAmkb81iUpudIpq8o1jf0glRFy8t/cp4xEiRRa6R5hUjht1dl2IZn/cDhkpj6KEOkInXeY9hwg==}
+    dependencies:
+      '@types/react': 17.0.20
     dev: true
 
   /@types/react/17.0.20:
@@ -4149,6 +4159,14 @@ packages:
       object-assign: 4.1.1
       react: 17.0.2
       scheduler: 0.20.2
+    dev: false
+
+  /react-file-input/0.2.5_react@17.0.2:
+    resolution: {integrity: sha1-o1U2fZMj1cY1Ld081+w1guXJskU=}
+    peerDependencies:
+      react: 0.x
+    dependencies:
+      react: 17.0.2
     dev: false
 
   /react-is/16.13.1:
