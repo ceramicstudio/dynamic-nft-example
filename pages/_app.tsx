@@ -24,9 +24,10 @@ const web3Service = new Web3Service({
 
 const ceramicService = new CeramicService(
   Networks.DEV_UNSTABLE,
-  'http://localhost:7007'
-  // "https://ceramic-dev.3boxlabs.com"
+  // 'http://localhost:7007'
+  "https://ceramic-dev.3boxlabs.com"
 );
+// @ts-ignore
 ceramicService.connect = async () => {
   await web3Service.connect();
   const provider = web3Service.provider;
