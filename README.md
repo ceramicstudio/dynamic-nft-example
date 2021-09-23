@@ -4,7 +4,15 @@ Fork it freely.
 
 ## Getting Started
 
-After installing the dependencies, run the development server:
+1. Install dependencies.
+
+2. Create local ENV file with your [web3.storage](https://web3.storage) access token:
+
+```
+WEB3STORAGE_TOKEN=eyJhbGc...
+```
+
+3. Run the development server:
 
 ```bash
 npm run dev
