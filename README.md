@@ -24,6 +24,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
+Note: this app is not fully static. There is a backend part, that interacts with web3.storage. The backend parts runs automatically,
+when you do `npm run dev` or `npm run start`.
+
 ## Learn More
 
 To learn more about Ceramic, take a look at the following resources:
