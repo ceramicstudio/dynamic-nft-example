@@ -6,6 +6,8 @@ import { Web3Provider, Web3Service } from "../components/use-web3";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import { EthereumAuthProvider } from "@ceramicnetwork/blockchain-utils-linking";
 
+const INFURA_TOKEN = process.env.NEXT_PUBLIC_INFURA_TOKEN;
+
 const web3Service = new Web3Service({
   network: "rinkeby",
   cacheProvider: false,
@@ -16,7 +18,7 @@ const web3Service = new Web3Service({
     walletconnect: {
       package: WalletConnectProvider,
       options: {
-        infuraId: "b407db983da44def8a68e3fdb6bea776",
+        infuraId: INFURA_TOKEN,
       },
     },
   },
@@ -25,16 +27,15 @@ const web3Service = new Web3Service({
 const ceramicService = new CeramicService(
   Networks.DEV_UNSTABLE,
   // 'http://localhost:7007'
-  "https://ceramic-dev.3boxlabs.com"
+  "https://ceramic-dev.3boxlabs.com",
+  async () => {
+    await web3Service.connect();
+    const provider = web3Service.provider;
+    const web3 = web3Service.web3;
+    const accounts = await web3.eth.getAccounts();
+    return new EthereumAuthProvider(provider, accounts[0]);
+  }
 );
-// @ts-ignore
-ceramicService.connect = async () => {
-  await web3Service.connect();
-  const provider = web3Service.provider;
-  const web3 = web3Service.web3;
-  const accounts = await web3.eth.getAccounts();
-  return new EthereumAuthProvider(provider, accounts[0]);
-};
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

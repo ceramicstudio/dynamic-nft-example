@@ -6,10 +6,11 @@ Fork it freely.
 
 1. Install dependencies.
 
-2. Create local ENV file with your [web3.storage](https://web3.storage) access token:
+2. Create local ENV file with your [web3.storage](https://web3.storage) and [INFURA](https://infura.io) access tokens:
 
 ```
 WEB3STORAGE_TOKEN=eyJhbGc...
+NEXT_PUBLIC_INFURA_TOKEN=b40...
 ```
 
 3. Run the development server:
