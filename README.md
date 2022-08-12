@@ -1,3 +1,7 @@
+> ⚠️🛑 **DEPRECATED** 🛑⚠️
+>
+> The project was created long time ago. While the code patterns are solid, there is no guarantee, the project can really run.
+
 This is an example application that uses [Ceramic](https://ceramic.network), based on [Next.js](https://nextjs.org/).
 
 Fork it freely.
